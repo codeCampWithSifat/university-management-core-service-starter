@@ -24,7 +24,7 @@ const getAllFromDB = async (
   const { page, limit, skip } = paginationHelpers.calculatePagination(options);
   const { searchTerm, ...filterData } = filters;
 
-  console.log(filterData);
+  // console.log(filterData);
 
   const andConditions = [];
 
