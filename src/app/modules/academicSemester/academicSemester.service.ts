@@ -28,6 +28,18 @@ const getAllFromDB = async (
 
   const andConditions = [];
 
+  /*
+   if(searchTerm) {
+    andConditions.push({
+      OR : ['title','code','startMonth','endMonth'].map(field => ({
+        [field] : {
+          contains: searchTerm,
+          mode : "insensitive"
+        }
+      }))
+    })
+   }
+  */
   if (searchTerm) {
     andConditions.push({
       OR: AcademicSemesterSearchAbleFields.map(field => ({
@@ -48,6 +60,16 @@ const getAllFromDB = async (
       })),
     });
   }
+
+  // if (Object.keys(filterData).length > 0) {
+  //   andConditions.push({
+  //     AND : Object.keys(filterData).map((key) => ({
+  //       [key] : {
+  //         equals : (filterData as any)[key]
+  //       }
+  //     }))
+  //   })
+  // }
 
   const whereConditions: Prisma.AcademicSemesterWhereInput =
     andConditions.length > 0 ? { AND: andConditions } : {};
