@@ -22,7 +22,7 @@ const insertIntoDB = async (
     },
   });
 
-  console.log(isExistOfferedCourse);
+  // console.log(isExistOfferedCourse);
   if (!isExistOfferedCourse) {
     throw new ApiError(httpStatus.BAD_REQUEST, 'Something Went Wrong');
   }
