@@ -4,8 +4,36 @@ import ApiError from '../../../errors/ApiError';
 import prisma from '../../../shared/prisma';
 import { hasTimeConflict } from '../../../shared/utils';
 
+// const checkRoomAvailable = async (data: OfferedCourseClassSchedule) => {
+//   const allreadyBookedRoomOnDay =
+//     await prisma.offeredCourseClassSchedule.findMany({
+//       where: {
+//         dayOfWeek: data.dayOfWeek,
+//         room: {
+//           id: data.roomId,
+//         },
+//       },
+//     });
+
+//   const existingSlots = allreadyBookedRoomOnDay.map(schedule => ({
+//     startTime: schedule.startTime,
+//     endTime: schedule.endTime,
+//     dayOfWeek: schedule.dayOfWeek,
+//   }));
+
+//   const newSlot = {
+//     startTime: data.startTime,
+//     endTime: data.endTime,
+//     dayOfWeek: data.dayOfWeek,
+//   };
+
+//   if (hasTimeConflict(existingSlots, newSlot)) {
+//     throw new ApiError(httpStatus.CONFLICT, 'Room is already booked');
+//   }
+// };
+
 const checkRoomAvailable = async (data: OfferedCourseClassSchedule) => {
-  const allreadyBookedRoomOnDay =
+  const alreadyBookedRoomOnDay =
     await prisma.offeredCourseClassSchedule.findMany({
       where: {
         dayOfWeek: data.dayOfWeek,
@@ -15,7 +43,7 @@ const checkRoomAvailable = async (data: OfferedCourseClassSchedule) => {
       },
     });
 
-  const existingSlots = allreadyBookedRoomOnDay.map(schedule => ({
+  const existingSlots = alreadyBookedRoomOnDay.map(schedule => ({
     startTime: schedule.startTime,
     endTime: schedule.endTime,
     dayOfWeek: schedule.dayOfWeek,
@@ -28,10 +56,38 @@ const checkRoomAvailable = async (data: OfferedCourseClassSchedule) => {
   };
 
   if (hasTimeConflict(existingSlots, newSlot)) {
-    throw new ApiError(httpStatus.CONFLICT, 'Room is already booked');
+    throw new ApiError(httpStatus.CONFLICT, 'Room is already booked!');
+  }
+};
+
+const checkFacultyAvailable = async (data: OfferedCourseClassSchedule) => {
+  const alreadyFacultyAssigned =
+    await prisma.offeredCourseClassSchedule.findMany({
+      where: {
+        dayOfWeek: data.dayOfWeek,
+        faculty: {
+          id: data.facultyId,
+        },
+      },
+    });
+  const existingSlots = alreadyFacultyAssigned.map(schedule => ({
+    startTime: schedule.startTime,
+    endTime: schedule.endTime,
+    dayOfWeek: schedule.dayOfWeek,
+  }));
+
+  const newSlot = {
+    startTime: data.startTime,
+    endTime: data.endTime,
+    dayOfWeek: data.dayOfWeek,
+  };
+
+  if (hasTimeConflict(existingSlots, newSlot)) {
+    throw new ApiError(httpStatus.CONFLICT, 'Faculty is already booked');
   }
 };
 
 export const OfferedCourseClassScheduleUtils = {
   checkRoomAvailable,
+  checkFacultyAvailable,
 };
