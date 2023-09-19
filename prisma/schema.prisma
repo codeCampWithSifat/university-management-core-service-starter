@@ -271,5 +271,5 @@ model StudentSemesterRegistration {
   semesterRegistrationId String
   semesterRegistration   SemesterRegistration @relation(fields: [semesterRegistrationId], references: [id])
 
-  @@map("student_semester_registration")
+  @@map("student_semester_registrations")
 }
