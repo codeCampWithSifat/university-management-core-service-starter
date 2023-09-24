@@ -1,0 +1,25 @@
+Sat Sep 23 2023 6:34:9 } [PH] error: 
+Invalid `prisma.studentSemesterRegistrationCourse.create()` invocation:
+
+
+Unique constraint failed on the fields: (`semesterRegistrationId`,`studentId`,`offeredCourseId`,`offeredCourseSectionId`)
+Sat Sep 23 2023 6:34:44 } [PH] error: 
+Invalid `prisma.studentSemesterRegistrationCourse.create()` invocation:
+
+
+Unique constraint failed on the fields: (`semesterRegistrationId`,`studentId`,`offeredCourseId`,`offeredCourseSectionId`)
+Sat Sep 23 2023 6:37:28 } [PH] error: 
+Invalid `prisma.offeredCourseSection.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+Sat Sep 23 2023 6:40:9 } [PH] error: 
+Invalid `prisma.offeredCourseSection.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.
+Sat Sep 23 2023 6:43:13 } [PH] error: 
+Invalid `prisma.offeredCourseSection.update()` invocation:
+
+
+An operation failed because it depends on one or more records that were required but not found. Record to update not found.

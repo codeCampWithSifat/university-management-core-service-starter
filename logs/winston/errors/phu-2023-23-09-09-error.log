@@ -1,0 +1,11 @@
+Sat Sep 23 2023 9:57:6 } [PH] error: 
+Invalid `prisma.studentSemesterRegistrationCourse.create()` invocation:
+
+
+Unique constraint failed on the fields: (`semesterRegistrationId`,`studentId`,`offeredCourseId`)
+Sat Sep 23 2023 9:58:19 } [PH] error: 
+Invalid `prisma.studentSemesterRegistrationCourse.create()` invocation:
+
+
+Unique constraint failed on the fields: (`semesterRegistrationId`,`studentId`,`offeredCourseId`)
+Sat Sep 23 2023 9:59:41 } [PH] error: There is already ONGOING registration

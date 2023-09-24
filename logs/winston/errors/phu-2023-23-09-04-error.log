@@ -1,0 +1,21 @@
+Sat Sep 23 2023 4:40:48 } [PH] error: There is already UPCOMING registration
+Sat Sep 23 2023 4:43:8 } [PH] error: There is already UPCOMING registration
+Sat Sep 23 2023 4:45:3 } [PH] error: There is already UPCOMING registration
+Sat Sep 23 2023 4:57:3 } [PH] error: 
+Invalid `prisma.studentSemesterRegistrationCourse.create()` invocation:
+
+{
+  data: {
+    studentId: "d8af0d0c-2d6b-420b-8f90-45231273821b",
+    semesterRegistrationId: undefined,
+    offeredCourseId: "680b314f-5829-4e90-8677-7caae8c399b9",
+    offeredCourseSectionId: "2cd43848-1e12-4345-8ef3-ae369266aad5",
++   semesterRegirstration: {
++     create: SemesterRegistrationCreateWithoutStudentSemesterRegistrationCoursesInput | SemesterRegistrationUncheckedCreateWithoutStudentSemesterRegistrationCoursesInput,
++     connectOrCreate: SemesterRegistrationCreateOrConnectWithoutStudentSemesterRegistrationCoursesInput,
++     connect: SemesterRegistrationWhereUniqueInput
++   }
+  }
+}
+
+Argument `semesterRegirstration` is missing.
