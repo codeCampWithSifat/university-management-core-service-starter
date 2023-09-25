@@ -14,6 +14,12 @@ router.post(
   SemesterRegistrationController.insertIntoDB
 );
 
+router.get(
+  '/get-my-registration',
+  auth(ENUM_USER_ROLE.STUDENT),
+  SemesterRegistrationController.getMyRegistration
+);
+
 router.get('/', SemesterRegistrationController.getAllFromDB);
 router.get('/:id', SemesterRegistrationController.getByIdFromDB);
 
@@ -48,6 +54,13 @@ router.post(
   validateRequest(SemesterRegistrationValidation.enrollOrWithdrawIntoCourse),
   auth(ENUM_USER_ROLE.STUDENT),
   SemesterRegistrationController.withdrawFromCourse
+);
+
+router.post(
+  '/confirm-my-registration',
+  // validateRequest(SemesterRegistrationValidation.enrollOrWithdrawIntoCourse),
+  auth(ENUM_USER_ROLE.STUDENT),
+  SemesterRegistrationController.confirmMyRegistration
 );
 
 export const SemesterRegistrationRoutes = router;

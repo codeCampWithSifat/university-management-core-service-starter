@@ -1,5 +1,0 @@
-Sun Sep 10 2023 7:2:23 } [PH] error: 
-Invalid `prisma.semesterRegistration.create()` invocation:
-
-
-Operation 'createOne' for model 'SemesterRegistration' does not match any query.
